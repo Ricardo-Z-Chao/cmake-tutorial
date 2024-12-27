@@ -1,6 +1,6 @@
-#include <cmath>
 #include <iostream>
 #include "mysqrt.h"
+#include "Table.h"
 
 namespace mathfunctions
 {
@@ -13,12 +13,13 @@ namespace mathfunctions
         return 0;
       }
 
-#if defined(HAVE_LOG) && defined(HAVE_EXP)
-      double result = std::exp(std::log(x) * 0.5);
-      std::cout << "Computing sqrt of " << x << " to be " << result
-                << " using log and exp" << std::endl;
-#else
       double result = x;
+
+      if (x >= 1 && x < 10)
+      {
+        std::cout << "Use the table to help find an initial value " << std::endl;
+        result = sqrtTable[static_cast<int>(x)];
+      }
 
       for (int i = 0; i < 10; ++i)
       {
@@ -30,7 +31,6 @@ namespace mathfunctions
         result = result + 0.5 * delta / result;
         std::cout << "Computing sqrt of " << x << " to be " << result << std::endl;
       }
-#endif
       return result;
     }
   }
