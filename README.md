@@ -112,3 +112,9 @@ Excute the following command in the command line:
 ```shell
 ctest --preset=default
 ```
+
+If you want to display our CTest results with CDash, navigate to the build directory and run:
+
+```shell
+ctest -D Experimental
+```
