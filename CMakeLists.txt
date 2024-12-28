@@ -22,7 +22,7 @@ add_executable(Tutorial tutorial.cxx)
 target_link_libraries(Tutorial PUBLIC MathFunctions tutorial_compiler_flags)
 target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}")
 
-enable_testing()
+include(CTest)
 add_test(NAME Runs COMMAND Tutorial 25)
 add_test(NAME Usage COMMAND Tutorial)
 set_tests_properties(Usage PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number")
