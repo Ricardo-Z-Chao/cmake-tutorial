@@ -83,3 +83,32 @@ Excute the following command in the command line:
    ```shell
    cmake --build --preset=default
    ```
+
+# Install
+
+Excute the command `cmake --install <dir>`, where `<dir>` corresponds to the `binaryDir` field configured in the "configurePresets" preset. The CMake variable `CMAKE_INSTALL_PREFIX` is used to determine the root of where the files will be installed. In this case, you can run the command as follows:
+
+```shell
+cmake --install out/build/windows-only
+```
+
+Afterwards, you can check the directory specified by the `CMAKE_INSTALL_PREFIX` variable to verify the installation location.
+
+# Test
+
+Add "testPresets" preset in the `CMakeUserPresets.json` file:
+
+```json
+"testPresets": [
+    {
+        "name": "default",
+        "configurePreset": "windows-only"
+    }
+]
+```
+
+Excute the following command in the command line:
+
+```shell
+ctest --preset=default
+```
