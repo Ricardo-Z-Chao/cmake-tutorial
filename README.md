@@ -118,3 +118,17 @@ If you want to display our CTest results with CDash, navigate to the build direc
 ```shell
 ctest -D Experimental
 ```
+
+# Package
+
+To build a binary distribution, from the binary directory run:
+
+```shell
+cpack
+```
+
+To create an archive of the full source tree you would type:
+
+```shell
+cpack --config CPackSourceConfig.cmake
+```
