@@ -4,7 +4,9 @@ option(USE_MYMATH "Use tutorial provided math implementation" ON)
 
 include(CheckCXXSourceCompiles)
 
-target_include_directories(MathFunctions INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(
+  MathFunctions INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+                          $<INSTALL_INTERFACE:include>)
 
 if(USE_MYMATH)
   include(MakeTable.cmake)
@@ -31,5 +33,8 @@ set(installable_libs MathFunctions tutorial_compiler_flags)
 if(TARGET SqrtLibrary)
   list(APPEND installable_libs SqrtLibrary)
 endif()
-install(TARGETS ${installable_libs} DESTINATION lib)
+install(
+  TARGETS ${installable_libs}
+  EXPORT MathFunctionsTargets
+  DESTINATION lib)
 install(FILES MathFunctions.h DESTINATION include)
