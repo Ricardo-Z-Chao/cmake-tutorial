@@ -1,6 +1,6 @@
 # Overview
 
-Based on CMake official [tutorial](https://cmake.org/cmake/help/v3.30/guide/tutorial/index.html), one can quickly master CMake.
+Based on CMake official [tutorial](https://cmake.org/cmake/help/v3.30/guide/tutorial/index.html) that uses Newton's method for finding roots.
 
 # Formatter
 
